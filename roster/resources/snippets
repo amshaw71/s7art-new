@@ -1,0 +1,25 @@
+<?php
+require_once "header.php";
+$now=time();
+echo "<p>Raw time() \$now is: " . $now . "<br>\n";
+$mysqldate=date( 'Y-m-d H:i:s', $now );
+echo "Output from date( 'Y-m-d H:i:s', \$now ); is: " . $mysqldate . "<br>\n";
+$phpdate = strtotime( $mysqldate );
+echo "Output from \$phpdate = strtotime(\$mysqldate); is: " . $phpdate . "<br>\n";
+$collected1='05';
+$collected2='20';
+$newdate=base_time($collected1,$collected2);
+echo $newdate . "<br>";
+$phpdate = strtotime( $newdate );
+$prefdate= "2000-01-01 " . $collected1 . ":" . $collected2 . ":00";
+echo "Constructed date looks like this: " . $newdate . "<br>";
+$day_name="Friday";
+$day=base_day($day_name);
+echo "<br>\$day= :" . $day;
+echo "<br>" . $day . "<br>";
+$mydate=getdate(date("$phpdate"));
+//echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year] <br>";
+print_r($mydate);
+print_r($weekdays);
+echo "</p>";
+?>
